@@ -1,56 +1,125 @@
-/* 基础样式 */
-body {
+/* styles.css */
+
+/* 基本布局 */
+* {
     margin: 0;
     padding: 0;
-    background: linear-gradient(45deg, #ff0066, #9900cc);
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Orbitron', sans-serif;  /* 选择科技感强的字体 */
-    color: white;
-    overflow: hidden;
+    box-sizing: border-box;
 }
 
-/* 中心容器 */
-.container {
-    text-align: center;
+body {
+    font-family: Arial, sans-serif;
+    background: #f0f0f0;
+    color: #333;
     padding: 20px;
-    border: 2px solid #fff;
-    border-radius: 10px;
-    background: rgba(0, 0, 0, 0.6);
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    background: url('1.jpg') no-repeat center center/cover;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* 头部 */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    padding: 40px;
+    border-radius: 15px;
+    /* backdrop-filter: blur(10px); 毛玻璃效果 */
+    color: white;
+}
+
+.profile {
+    text-align: center;
+}
+
+.profile-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.tags span {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.3);
+    padding: 5px 15px;
+    margin: 5px;
+    border-radius: 20px;
+}
+
+/* 内容区域 */
+.content {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(3px); /* 毛玻璃效果 */
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
     position: relative;
-    z-index: 10;
+    overflow: hidden; /* 防止图片溢出 */
 }
 
-/* 标题样式 */
-h1 {
-    font-size: 3em;
-    margin-bottom: 20px;
-    font-family: 'Zilla Slab', serif;  /* 使用稍显中二的字体 */
-    text-shadow: 0 0 20px rgba(255, 0, 0, 1), 0 0 30px rgba(255, 0, 0, 1);
+.card:hover {
+    transform: translateY(-10px);
 }
 
-/* 简单的介绍文字 */
-.intro {
-    font-size: 1.5em;
-    margin-bottom: 20px;
-    letter-spacing: 2px;
-    opacity: 0;
-    animation: fadeIn 2s forwards;
-    animation-delay: 1s;
+.card h3 {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
 }
 
+.card p {
+    margin-bottom: 15px;
+}
 
-/* 动画效果 */
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-        transform: translateY(20px);
+.card a {
+    text-decoration: none;
+    color: #3498db;
+}
+
+/* 卡片图片部分 */
+.card-image img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+   
+}
+#card-image2{
+    object-position:50% 20%;
+    /* 改一下截取开始的位置 不然成无头怪 */
+}
+#card-image3{
+    object-position:50% 30%;
+}
+#card-image4{
+    object-position:50% 15%;
+}
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
     }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
+
+    .content {
+        grid-template-columns: 1fr;
+    }
+
+    .card-image img {
+        height: 120px; /* 手机端调整图片高度 */
     }
 }
