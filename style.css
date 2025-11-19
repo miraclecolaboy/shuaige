@@ -1,8 +1,9 @@
-/* 基本布局 */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    
+    
 }
 
 body {
@@ -10,22 +11,10 @@ body {
     background: #f0f0f0;
     color: #333;
     padding: 20px;
-    position: relative; /* 确保 body 有定位 */
-    overflow: hidden; /* 防止滚动时背景跑动 */
-}
-
-body::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('1.jpg') no-repeat center center/cover;
-    background-attachment: fixed;
+    background:no-repeat center center/cover;
+    background-image: url('1.jpg');
     background-size: cover;
-    z-index: -1; /* 确保背景不覆盖其他内容 */
-    opacity: 0.5; /* 如果需要，可以调节透明度 */
+   background-attachment: fixed;
 }
 
 .container {
@@ -33,13 +22,14 @@ body::before {
     margin: 0 auto;
 }
 
-/* 头部 */
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    
     padding: 40px;
     border-radius: 15px;
+    /* backdrop-filter: blur(10px); 毛玻璃效果 */
     color: white;
 }
 
@@ -62,7 +52,6 @@ body::before {
     border-radius: 20px;
 }
 
-/* 内容区域 */
 .content {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -72,14 +61,14 @@ body::before {
 
 .card {
     background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px); 
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
     transition: transform 0.3s ease;
     position: relative;
-    overflow: hidden;
+    overflow: hidden; /* 防止图片溢出 */
 }
 
 .card:hover {
@@ -106,20 +95,18 @@ body::before {
     height: 150px;
     object-fit: cover;
     border-radius: 10px;
+   
 }
-
-#card-image2 {
-    object-position: 50% 20%;
+#card-image2{
+    object-position:50% 20%;
+    /* 改一下截取开始的位置 不然成无头怪 */
 }
-
-#card-image3 {
-    object-position: 50% 30%;
+#card-image3{
+    object-position:50% 30%;
 }
-
-#card-image4 {
-    object-position: 50% 15%;
+#card-image4{
+    object-position:50% 15%;
 }
-
 /* 响应式设计 */
 @media (max-width: 768px) {
     .header {
@@ -133,7 +120,6 @@ body::before {
     }
 
     .card-image img {
-        height: 120px;
+        height: 120px; /* 手机端调整图片高度 */
     }
 }
-
